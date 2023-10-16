@@ -53,7 +53,7 @@ CREATE TABLE `users` (
   `username` varchar(20) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL COMMENT 'encrypted passwords are better',
-  `picture` varchar(255) NOT NULL COMMENT 'name of profile picture',
+  `picture` varchar(255) NULL COMMENT 'name of profile picture',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
