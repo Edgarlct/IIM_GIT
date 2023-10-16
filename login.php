@@ -12,18 +12,21 @@ require('model/functions.fn.php');
 ********************************/
 
 if(isset($_POST['email']) && isset($_POST['password'])){
-	if(!empty($_POST['email']) && !empty($_POST['password'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
-		// TODO
+    if(!empty($email) && !empty($password)){
+        $connectionResult = userConnection($db, $email, $password);
 
-		// Force user connection to access dashboard
-		userConnection($db, 'git@initiation.com', 'password');
-		
-		header('Location: dashboard.php');
-
-	}else{
-		$error = 'Champs requis !';
-	}
+        if($connectionResult) {
+            header('Location: dashboard.php');
+            exit;
+        } else {
+            $error = 'Mauvais identifiants';
+        }
+    }else{
+        $error = 'Champs requis !';
+    }
 }
 
 /******************************** 
